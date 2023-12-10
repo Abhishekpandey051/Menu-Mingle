@@ -11,26 +11,24 @@ export default function Body() {
   const fetchAndSetData = async () => {
     try {
       const response = await fetch(
-        "https://www.swiggy.com/mapi/homepage/getCards?lat=28.6055049&lng=77.3769437"
+        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5355161&lng=77.3910265&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
       );
-      console.log("jgahj".response)
       const data = await response.json();
+      console.log(data.data.cards[2].card.card.gridElements.infoWithStyle.restaurants)
       const resdata =
-        data?.data?.success.cards[3]?.gridWidget?.gridElements?.infoWithStyle
-          ?.restaurants;
-      console.log("Here is the data from api resdata", resdata );
-
-      // const rest = data.data.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants.info;
-      //  const rest = data.cards[0].card.gridElements.infoWithStyle.restautants;
+      data.data.cards[2].card.card.gridElements.infoWithStyle.restaurants
       setListOfRest(resdata);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
-  return (
-    <div className="px-3 sticky top-40 z-50 block">
+  const topResto = () =>{
     
-      <h1 className=" text-center text-2xl font-bold mt-6">Your Restaurant</h1>
+  }
+  return (
+    <div className="mx-3 sticky z-50 block ">
+    <button onClick={topResto} className="m-3 bg-gray-900 text-white font-bold">Top Rated Reastaurant</button>
+      <h1 className=" text-center text-2xl font-bold mt-4">Your Restaurant</h1>
       
       {listOfRest.map((val) => (
         <Card key={val.id} res={val.info} />
