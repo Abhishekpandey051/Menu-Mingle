@@ -2,11 +2,19 @@ import React from 'react'
 
 const Shimmer = () =>{
     return(
-        <div>
-            <h1>Shimmer Ui </h1>
-            <h3>This is the shimmer UI </h3>
-        </div>
-
+    <div className='flex flex-wrap'>
+    <div className='m-20 w-[200px] h-[400px] bg-[#f0f0f0]'></div>
+    <div className='m-20 w-[200px] h-[400px] bg-[#f0f0f0]'></div>
+    <div className='m-20 w-[200px] h-[400px] bg-[#f0f0f0]'></div>
+    <div className='m-20 w-[200px] h-[400px] bg-[#f0f0f0]'></div>
+    <div className='m-20 w-[200px] h-[400px] bg-[#f0f0f0]'></div>
+    <div className='m-20 w-[200px] h-[400px] bg-[#f0f0f0]'></div>
+    <div className='m-20 w-[200px] h-[400px] bg-[#f0f0f0]'></div>
+    <div className='m-20 w-[200px] h-[400px] bg-[#f0f0f0]'></div>
+    <div className='m-20 w-[200px] h-[400px] bg-[#f0f0f0]'></div>
+    <div className='m-20 w-[200px] h-[400px] bg-[#f0f0f0]'></div>
+  </div>
+  
     )
 }
 
