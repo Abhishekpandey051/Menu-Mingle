@@ -4,8 +4,8 @@ import Shimmer from "./Shimmer";
 
 export default function Body() {
   const [listOfRest, setListOfRest] = useState([]);
-  // const [searcCard, setSearchCard] = useState([]);
-
+  const [searcCard, setSearchCard] = useState([]);
+  const [inputValue,setinputValue] = useState("");
   useEffect(() => {
     fetchAndSetData();
   }, []);
@@ -21,34 +21,31 @@ export default function Body() {
       data.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
       console.log(resdata)
       setListOfRest(resdata);
+      setSearchCard(resdata);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
   const topResto = () =>{
-    setListOfRest(listOfRest.filter((res)=>res.info.avgRating>4.2))
+    setSearchCard(searcCard.filter((res)=>res.info.avgRating>4.2))
   }
-  // const searchRes = () =>{
-  //   const searchName = listOfRest.filter((resName)=>resName.info.name.toLowerCase().includes.searcCard)
-  //   setListOfRest(searchName)
-  //   console.log(searchName)
-  // }
-  // const resetList = () =>{
-  //   fetchAndSetData();
-  //   setSearchCard("")
-  // }
+  const searchRes = () =>{
+    const searchName = listOfRest.filter((resName)=>resName.info.name.toLowerCase().includes(inputValue.toLocaleLowerCase()));
+    setSearchCard(searchName)
+    setinputValue('')
+    console.log(searchName)
+  }
   if(listOfRest.length === 0){
     return <Shimmer/>
   }
   return (
     <div className="mx-3 sticky z-50 block ">
     <button onClick={topResto} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">Top Restaurant</button>
-    {/* <input onChange={(e)=>{setSearchCard(e.target.value)}} type="text" className="border bg-gray-400"/> */}
-    {/* <button onClick={searchRes} className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded ">Search</button> */}
-    {/* <button onClick = {resetList} className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded ">Reset</button> */}
+    <input onChange={(e)=>{setinputValue(e.target.value)}} type="text" className="border bg-gray-400" value={inputValue}/>
+    <button onClick={searchRes} className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded ">Search</button>
       <h1 className=" text-center text-2xl font-bold mt-4">Your Restaurant</h1>
       
-      {listOfRest.map((val) => (
+      {searcCard.map((val) => (
         <Card key={val.id} res={val.info} />
       ))}
     </div>
