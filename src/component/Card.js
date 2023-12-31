@@ -2,7 +2,7 @@ import React from "react";
 
 function Card(props) {
   return (
-    <section className=" max-w-lg mr-4 l text-gray-600 body-font py-7 justify-between flex-wrap inline-block ">
+    <section className=" max-w-lg mr-4  text-gray-600 body-font py-7 justify-between flex-wrap inline-block ">
       <div className="container  mx-auto md: w-60 ">
         <div className="  grid grid-flow-dense">
           {/* Card 1 */}
