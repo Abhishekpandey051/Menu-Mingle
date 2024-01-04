@@ -20,7 +20,7 @@ export default function Body() {
       // console.log(data.data.cards[4].card.card.gridElements.infoWithStyle.restaurants)
       const resdata =
       data.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
-      console.log(resdata)
+      // console.log(resdata)
       setListOfRest(resdata);
       setSearchCard(resdata);
     } catch (error) {
