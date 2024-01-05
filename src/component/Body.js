@@ -18,8 +18,9 @@ export default function Body() {
       );
       const data = await response.json();
       // console.log(data.data.cards[4].card.card.gridElements.infoWithStyle.restaurants)
+      // console.log("Data",data)
       const resdata =
-      data.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
+      data.data.cards[5].card.card.gridElements.infoWithStyle.restaurants
       // console.log(resdata)
       setListOfRest(resdata);
       setSearchCard(resdata);
