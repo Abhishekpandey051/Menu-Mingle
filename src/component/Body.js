@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 export default function Body() {
   const [listOfRest, setListOfRest] = useState([]);
@@ -17,8 +18,8 @@ export default function Body() {
         "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5355161&lng=77.3910265&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
       );
       const data = await response.json();
-      // console.log(data.data.cards[4].card.card.gridElements.infoWithStyle.restaurants)
-      // console.log("Data",data)
+      console.log(data.data.cards[5].card.card.gridElements.infoWithStyle.restaurants)
+      // console.log("API Data",data)
       const resdata =
       data.data.cards[5].card.card.gridElements.infoWithStyle.restaurants
       // console.log(resdata)
@@ -49,7 +50,7 @@ export default function Body() {
       <h1 className=" text-center text-2xl font-bold mt-4">Your Restaurant</h1>
       
       {searcCard.map((val) => (
-        <Card key={val.id} res={val.info} />
+        <Link key={val.info.id} to={"/restaurant/" + val.info.id}><Card  res={val.info} /></Link>
       ))}
     </div>
   );

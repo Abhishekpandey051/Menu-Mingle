@@ -5,7 +5,7 @@ import Contact from "./component/Contact"
 import Error from "./component/Error"
 import Service from "./component/Service";
 import { createBrowserRouter,Outlet } from "react-router-dom";
-import { RestaurantMenu } from "@mui/icons-material";
+import RestaurantMenu from "./component/RestaurantMenu"
 
 function App() {
   return (
