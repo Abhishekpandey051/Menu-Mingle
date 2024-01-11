@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import { API_DATA } from "../utility/constant";
 
 export default function Body() {
   const [listOfRest, setListOfRest] = useState([]);
@@ -14,14 +15,13 @@ export default function Body() {
 
   const fetchAndSetData = async () => {
     try {
-      const response = await fetch(
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5355161&lng=77.3910265&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      const response = await fetch(API_DATA
       );
       const data = await response.json();
-      console.log(data.data.cards[5].card.card.gridElements.infoWithStyle.restaurants)
+      console.log(data.data.cards[2])
       // console.log("API Data",data)
       const resdata =
-      data.data.cards[5].card.card.gridElements.infoWithStyle.restaurants
+      data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
       // console.log(resdata)
       setListOfRest(resdata);
       setSearchCard(resdata);
