@@ -6,7 +6,9 @@ import Error from "./component/Error"
 import Service from "./component/Service";
 import { createBrowserRouter,Outlet } from "react-router-dom";
 import RestaurantMenu from "./component/RestaurantMenu"
+import { lazy } from "react";
 
+const Grocery = lazy(()=>import ("./component/Grocery"))
 function App() {
   return (
     <div className="relative ">
@@ -39,6 +41,10 @@ export const appRouter = createBrowserRouter([
       {
         path:"/restaurant/:resid",
         element: <RestaurantMenu/>
+      },
+      {
+        path:"/grocery",
+        element:<Grocery/>
       },
 
     ],

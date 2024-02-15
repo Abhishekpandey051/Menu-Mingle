@@ -11,7 +11,7 @@ const useApiData = () =>{
             const data = await fetch(API_DATA);
             const json = await data.json();
             const resdata =
-            json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
+            json.data.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
             setListOfRest(resdata);
         }catch(error){
             console.log("Error fetching data ",error);
