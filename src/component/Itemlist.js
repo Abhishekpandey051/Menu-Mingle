@@ -18,7 +18,7 @@ const Itemlist = ({item}) =>{
                 </div>
                 <div className="w-3/12 p-4 ">
                 <div className='absolute'>
-                <button className='p-2 shadow-lg rounded-lg bg-black text-white mx-10 mt-9'> Add+ </button>
+                <button className='p-1 shadow-lg rounded-lg bg-black text-white mx-10 mt-0'> Add+ </button>
                 </div>
                     <img src={CDN_URL + item.card.info.imageId} alt='item-img' className='w-full'  />
                 </div>

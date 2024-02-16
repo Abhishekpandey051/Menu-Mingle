@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import userContext from '../utility/UserContext';
 export default function Navbar() {
   const[auth,setAuth]=useState("Login");
+  const {logedInUser} = useContext(userContext)
   return (
     <header className="  text-gray-600 body-font shadow-lg  z-50 block sticky ">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
@@ -26,6 +28,7 @@ export default function Navbar() {
         <button onClick={()=>{auth==="Login"?setAuth("Logout"):setAuth("Login")}}>
         <h2 className='ml-3 items-center bg-pink-600 border-0 py-2 px-4 text-white focus:outline-none rounded' >{auth}</h2>
         </button>
+          <p   className="font-bold ml-5 hover:text-gray-900">{logedInUser}</p>
       </div>
     </header>
   );

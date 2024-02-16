@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import {CDN_URL} from '../utility/constant'
+import userContext from "../utility/UserContext";
 
 function Card(props) {
+  const {logedInUser} = useContext(userContext)
   return (
     <section className=" max-w-lg mr-4  text-gray-600 body-font py-7 justify-between flex-wrap inline-block ">
       <div className="container  mx-auto md: w-60 ">
@@ -26,6 +28,7 @@ function Card(props) {
               <p className="mt-1">{props.res.cuisines.join(", ")}</p>
               <p className="mt-1">{props.res.costForTwo}</p>
               <p className="mt-1">{props.res.locality}</p>
+              <p className="mt-1">User : {logedInUser}</p>
             </div>
           </div>
         </div>
