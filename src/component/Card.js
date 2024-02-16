@@ -1,4 +1,5 @@
 import React from "react";
+import {CDN_URL} from '../utility/constant'
 
 function Card(props) {
   return (
@@ -14,7 +15,7 @@ function Card(props) {
               <img
                 alt="ecommerce"
                 className="object-cover object-center w-full h-full block"
-                src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${props.res.cloudinaryImageId}`}
+                src={CDN_URL+ props.res.cloudinaryImageId}
               />
             </a>
             <div className="mt-4  ">
