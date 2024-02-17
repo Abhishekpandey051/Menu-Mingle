@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import RestaurantCategory from "./RestaurantCategory";
 
 const ReastaurantMenu = () => {
-  const [showIndex, setShowIndex] = useState(0);
+  const [showIndex, setShowIndex] = useState();
   const { resid } = useParams();
   const resInfo = useRestaurantMenu(resid);
   const { name, cuisines, avgRating, areaName, city } =
