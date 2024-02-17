@@ -1,30 +1,34 @@
-
-import React  from 'react'
-import useOnlineStation from '../utility/useOnlineStation'
+import { useEffect, useState } from "react";
+import useOnlineStation from "../utility/useOnlineStation";
 
 const About = () => {
+  const[userData, setUserData] = useState([]);
   const onlineStatus = useOnlineStation();
-  // useEffect(()=>{
-  //   findData();
-  // },[])
+  useEffect(() => {
+    findData();
+  }, []);
 
-  // const findData= async()=>{
-  //   const data = await fetch("https://us-central1-faang-path.cloudfunctions.net/faangpath/misc/formSelectors")
-  //   const fetchData = data.json();
-  //   console.log("Git Hub API",fetchData)
-  // }
+  const findData = async () => {
+    const data = await fetch("https://api.github.com/users/abhishekpandey051");
+
+    const fetchData = await data.json();
+    setUserData(fetchData)
+    console.log("Git Hub API", fetchData.name);
+  };
 
   return (
-    <div>
-      
-      <h1>About Us Page</h1>
-        <h2>This is the abiut us page</h2>
-
-<p>Online Status: {onlineStatus ? "Green" : "red"}</p>
-
+    <div className="bg-gray-100 min-h-screen flex justify-center items-center">
+      <div className="bg-white shadow-md rounded-md p-8 mx-auto max-w-lg">
+      <div className="items-center">
+      <img className="rounded-full w-[50%] items-center" src={userData.avatar_url} alt="profile img" />
+      </div>
+        <h1 className="text-2xl font-bold mb-4">{userData.name}</h1>
+       <p className="text-gray-700"> Github: {userData.login}</p>
+        <p className="text-gray-700">Bio : {userData.bio}</p>
+      </div>
+      <p>Status : {onlineStatus}</p>
     </div>
-  )
-}
+  );
+};
 
-export default About
-
+export default About;
