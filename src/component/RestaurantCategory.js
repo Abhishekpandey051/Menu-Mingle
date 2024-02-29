@@ -12,7 +12,7 @@ const RestaurantCategory = ({ data , showItems , setShowIndex}) => {
           <span className="font-bold text-lg">
             {data.title} ({data.itemCards.length})
           </span>
-         { showItems? <span>⬇️</span> : <span>⬆️</span>}
+         { showItems? <span>⬆️</span> : <span>⬇️</span>}
         </div>
         {/* Accordian body */}
         {showItems && <Itemlist item={data.itemCards} />}

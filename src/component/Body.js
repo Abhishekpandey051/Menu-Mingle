@@ -4,17 +4,21 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { API_DATA } from "../utility/constant";
 import userContext from "../utility/UserContext";
+import Card1 from "./Card1";
 
 export default function Body() {
   const [listOfRest, setListOfRest] = useState([]);
   const [searcCard, setSearchCard] = useState([]);
   const [inputValue,setinputValue] = useState("");
+  const [showModal, setShowModal] = useState(false);
 
   const {logedInUser , setUserName} = useContext(userContext)
 
   useEffect(() => {
     fetchAndSetData();
   }, []);
+
+  
 
   const fetchAndSetData = async () => {
     try {
@@ -45,12 +49,14 @@ export default function Body() {
   // }
   return (listOfRest.length === 0?<Shimmer/>:
     <div className="mx-3 sticky z-50 block ">
+    n
     <div className="mt-2">
     <button onClick={topResto} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">Top Restaurant</button>
     <input onChange={(e)=>{setinputValue(e.target.value)}} type="text" className="border border-blue-500 p-2 ml-2 outline-none rounded-lg" value={inputValue}/>
     <button onClick={searchRes} className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white p-2 ml-1 border border-blue-500 hover:border-transparent rounded ">Search</button>
     <label className="ml-5">User : </label>
-    <input onChange={(e)=>{setUserName(e.target.value)}} type="text" className="border border-blue-500 p-2 ml-2 outline-none rounded-lg" value={logedInUser}/>
+    
+    <input placeholder="Enter your name" onChange={(e)=>{setUserName(e.target.value)}} type="text" className="border border-blue-500 p-2 ml-2 outline-none rounded-lg" value={logedInUser}/>
     </div>
       <h1 className=" text-center text-2xl font-bold mt-4">Your Restaurant</h1>
       

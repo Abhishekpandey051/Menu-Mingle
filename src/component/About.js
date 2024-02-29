@@ -17,17 +17,20 @@ const About = () => {
   };
 
   return (
+    <>
     <div className="bg-gray-100 min-h-screen flex justify-center items-center">
       <div className="bg-white shadow-md rounded-md p-8 mx-auto max-w-lg">
-      <div className="items-center">
+      <div className="items-center ">
       <img className="rounded-full w-[50%] items-center" src={userData.avatar_url} alt="profile img" />
-      </div>
+      
         <h1 className="text-2xl font-bold mb-4">{userData.name}</h1>
        <p className="text-gray-700"> Github: {userData.login}</p>
         <p className="text-gray-700">Bio : {userData.bio}</p>
-      </div>
-      <p>Status : {onlineStatus}</p>
+        </div>
+      </div> 
     </div>
+      <p>Status : {onlineStatus ? "🟢" : "🔴"}</p>
+    </>
   );
 };
 

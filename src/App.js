@@ -8,6 +8,10 @@ import { createBrowserRouter,Outlet } from "react-router-dom";
 import RestaurantMenu from "./component/RestaurantMenu"
 import { lazy , useState , useEffect} from "react";
 import userContext from "./utility/UserContext";
+import appStore from "./App-Store/appStore";
+import { Provider } from "react-redux";
+import MenuCart from "./component/MenuCart";
+import Card1 from "./component/Card1";
 
 const Grocery = lazy(()=>import ("./component/Grocery"))
 function App() {
@@ -15,17 +19,20 @@ function App() {
 
   useEffect(()=>{
 const data = {
-  name:"Abhishek Pandey"
+  name:"abhishek"
 }
+console.log(data.name);
 setUserName(data.name)
   },[])
   return (
+    <Provider store={appStore}>
     <userContext.Provider value={{logedInUser:userName ,setUserName}}>
     <div className="relative ">
       <Navbar />
       <Outlet />
     </div>
     </userContext.Provider>
+    </Provider>
   );
 }
 export const appRouter = createBrowserRouter([
@@ -57,6 +64,14 @@ export const appRouter = createBrowserRouter([
         path:"/grocery",
         element:<Grocery/>
       },
+      {
+        path:"/cart",
+        element:<MenuCart/>
+      },
+      {
+        path:"/cart1",
+        element: <Card1/>
+      }
 
     ],
     errorElement:<Error/>
